@@ -50,7 +50,7 @@ const server = app.listen(PORT, () => {
 const io = socket(server, {
     cors: {
         pingTimeout: 60000,
-        origin: "*" ,
+        origin: process.NODE_ENV === 'production' ? `${process.env.ORIGIN}`: "http://localhost:3000/" ,
         methods: [ 'GET', 'POST' ]
     }
 });
@@ -71,8 +71,8 @@ io.on('connection', (socket) => {
         });
 
         // add new message
-        socket.on('add-message', ({message, name, image}) => {
-            let  chatMessage  =  new ChatMessage({ message: message, name: name, image: image});
+        socket.on('add-message', ({message, name}) => {
+            let  chatMessage  =  new ChatMessage({ message: message, name: name});
             chatMessage.save();
             io.emit("add-message", chatMessage);
     });

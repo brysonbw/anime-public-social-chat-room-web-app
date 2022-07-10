@@ -1,7 +1,7 @@
 # Anime Real-Time Public Social Chat Room App
 - Anonymous users can create and read real-time messages
 
-![anime-public-social-chat](https://res.cloudinary.com/ddlhtsgmp/image/upload/v1657424597/anime-social-chat_tuggaw.png)
+![anime-public-social-chat](https://res.cloudinary.com/ddlhtsgmp/image/upload/v1657432748/anime-social-chat_fe73rk.png)
 
 ## Front-End
 - React
@@ -10,8 +10,6 @@
 - Tailwind CSS
 - Typescript
 - Socket io-client
-- [waifu.pics API](https://waifu.pics/docs)
-  - Usage: anime image for anonymous user chat avatar
 
 ## Backend/Server
 - Node/Express
