@@ -16,17 +16,15 @@ const validationSchema = y.object({
    });
 
 const Home = (props: Props) => {
-    const {socketConnect, connection, animeImageUrl, messages} = useSocket()
+    const {socketConnect, connection, messages} = useSocket()
     
     // submit form values -> emit values/socket data
-    function onSubmit(values: {name: string, message: string, image: string},  action: any ) {
-      values.image = animeImageUrl
+    function onSubmit(values: {name: string, message: string},  action: any ) {
         try {
             if(connection) {
                 socketConnect.emit('add-message', {
                   message: values.message,
                   name: values.name,
-                  image: values.image
                 })
                 toast.success("Message added successfully.\n\nMessages are set (server-side) to auto delete/expire (for project/test purposes).",
                 {
@@ -67,7 +65,7 @@ const Home = (props: Props) => {
             <h1 className="text-[.75rem]">{message.name} ∙ <span><Moment fromNow>{message.createdAt}</Moment></span></h1>
                   <span className="text-[#121212]">{message.message}</span>
             </div>
-            <img src={`${message.image}`} alt="My profile" className="w-6 h-6 rounded-full order-1"/>
+         
          </div>
       </div>
       ))}
@@ -81,7 +79,6 @@ const Home = (props: Props) => {
     initialValues={{
         message: '',
         name: '',
-        image: ''
       }}
       onSubmit={onSubmit}
       validationSchema={validationSchema} >

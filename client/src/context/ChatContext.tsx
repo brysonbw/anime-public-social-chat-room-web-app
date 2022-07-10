@@ -1,10 +1,8 @@
-import axios from "axios";
 import { createContext, useContext, useEffect, useState} from "react";
 import io from "socket.io-client";
 import { IMessage } from "../types";
-import { imageCategoryList } from "../utils/ImageCategoryList";
 
-const socket = `https://anime-social-chat.herokuapp.com/`
+const socket = 'https://anime-social-chat.herokuapp.com/'
 
 const socketConnect = io(socket, {transports: ['websocket'], upgrade: false})   
 
@@ -17,9 +15,7 @@ export const ChatProvider = ({
     children: React.ReactNode
   }) => {
     const [connection, setConnection] = useState<boolean>(false);
-    const [animeImageUrl, setAnimeImageUrl] = useState<null | string>(null)
     const [messages, setMessages] = useState<IMessage[]>([])
-    const randomCategory = imageCategoryList[Math.floor(Math.random() * imageCategoryList.length)]
 
     // socket connection and events
     useEffect(() => {
@@ -49,25 +45,12 @@ export const ChatProvider = ({
 
       },[])
 
-      // fetch anime url: docs https://waifu.pics/docs
-      useEffect(() => {
-        const fetchAnimeImage = async () => {
-          try {
-           const res = await axios.get(`https://api.waifu.pics/sfw/${randomCategory}`)
-           const data = res.data 
-            setAnimeImageUrl(data.url)
-          } catch (error: any) {
-            console.log(error.message + ": Unable to fetch data")
-          }
-        } 
-        fetchAnimeImage()
-      }, [])
     
 
      
       
 
-      return <ChatContext.Provider value={{socketConnect, connection, animeImageUrl, messages, setMessages}}>{children}</ChatContext.Provider>
+      return <ChatContext.Provider value={{socketConnect, connection, messages, setMessages}}>{children}</ChatContext.Provider>
 
   }
 
