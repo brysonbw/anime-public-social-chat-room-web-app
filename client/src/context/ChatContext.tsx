@@ -4,7 +4,7 @@ import { IMessage } from "../types";
 
 const socket = 'https://anime-social-chat.herokuapp.com/'
 
-const socketConnect = io(socket, {transports: ['websocket'], upgrade: false})   
+const socketConnect = io(socket)   
 
 const ChatContext = createContext<any | null>(null);
 
