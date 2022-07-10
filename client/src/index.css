@@ -1,0 +1,36 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+html,
+body {
+  padding: 0;
+  margin: 0;
+  font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
+    Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
+  background-color: #121212
+}
+
+
+* {
+  box-sizing: border-box;
+}
+
+
+
+.borderCircle {
+  border-radius: 9999px;
+}
+
+
+.co {
+  max-width: 80rem;
+  padding: 0 1rem;
+  margin: 1rem auto 6rem;
+  text-align: center;
+}
+
