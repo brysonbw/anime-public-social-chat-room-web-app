@@ -26,7 +26,7 @@ const Home = (props: Props) => {
                   message: values.message,
                   name: values.name,
                 })
-                toast.success("Message added successfully.\n\nMessages are set (server-side) to auto delete/expire (for project/test purposes).",
+                toast.success("Message added successfully.\n\nMessages are set to auto delete/expire (for project/test purposes).",
                 {
                   duration: 8000,
                 })
