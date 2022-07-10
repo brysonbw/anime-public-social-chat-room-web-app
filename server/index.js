@@ -50,7 +50,7 @@ const server = app.listen(PORT, () => {
 const io = socket(server, {
     cors: {
         pingTimeout: 60000,
-        origin: "*" ,
+        origin: process.NODE_ENV === 'production' ? `${process.env.ORIGIN}`: "http://localhost:3000/" ,
         methods: [ 'GET', 'POST' ]
     }
 });
